@@ -15,7 +15,6 @@ from pathlib import Path
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
@@ -25,9 +24,7 @@ SECRET_KEY = 'django-insecure-^axojtv8re*ey89z$2%m-%#4#x_sx)0a2a_)n3vawzrfu7qr!)
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-
-ALLOWED_HOSTS = ['*','localhost','3.85.27.20','ec2-3-85-27-20.compute-1.amazonaws.com',]
-
+ALLOWED_HOSTS = ['*', 'localhost', '3.85.27.20', 'ec2-3-85-27-20.compute-1.amazonaws.com', ]
 
 # Application definition
 
@@ -70,7 +67,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'projectlio0.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
@@ -78,13 +74,12 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'myproject',
-	'USER': 'germagla',
-	'PASSWORD': 'germagla',
-	'HOST': '3.85.27.20',
-	'PORT': '',
+        'USER': 'germagla',
+        'PASSWORD': 'germagla',
+        'HOST': '3.85.27.20',
+        'PORT': '',
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
@@ -104,7 +99,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/4.1/topics/i18n/
 
@@ -115,7 +109,6 @@ TIME_ZONE = 'UTC'
 USE_I18N = True
 
 USE_TZ = True
-
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
@@ -128,4 +121,23 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 import os
+
 STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'file': {
+            'level': 'DEBUG',
+            'class': 'logging.FileHandler',
+            'filename': 'logs/debug.log',
+        },
+    },
+    'loggers': {
+        'django': {
+            'handlers': ['file'],
+            'level': 'DEBUG',
+        },
+    },
+}
