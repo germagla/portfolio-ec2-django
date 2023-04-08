@@ -73,11 +73,11 @@ WSGI_APPLICATION = 'projectlio0.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'myproject',
+        'NAME': 'portfolio-database-1',
         'USER': 'germagla',
-        'PASSWORD': 'germagla',
-        'HOST': '3.85.27.20',
-        'PORT': '',
+        'PASSWORD': 'fNf86#j7BuZc.AmazonRDS',
+        'HOST': 'portfolio-database-1.cscsss3ytfjt.us-east-1.rds.amazonaws.com',
+        'PORT': '5432',
     }
 }
 
