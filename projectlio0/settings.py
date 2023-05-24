@@ -53,7 +53,7 @@ ROOT_URLCONF = 'projectlio0.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR, 'templates', 'chatgpt_clone/templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
