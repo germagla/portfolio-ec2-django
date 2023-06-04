@@ -3,3 +3,6 @@ projectlio0env/
 env/
 venv/
 logs/
+local_cdn/
+node_modules/
+.env

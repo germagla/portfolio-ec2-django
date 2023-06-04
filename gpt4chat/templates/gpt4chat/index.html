@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+
+{% block title %}GPT4Chat{% endblock %}
+
+{% block header %}
+    <div id="chat-header" class="bg-gray-700 h-full border-b-gray-200">HEADER</div>
+
+{% endblock %}
+
+{% block content %}
+    <div id="chat-scrollable-container" class="flex justify-center">
+        <div class="border-4">
+            <h1>ROLE</h1>
+            <p>LOREM IPSUM</p>
+        </div>
+        <div class="border-4">
+            <h1>ROLE</h1>
+            <p>LOREM IPSUM</p>
+        </div>
+    </div>
+    <div id="chat-input-container">
+        <form hx-post="{% url 'process_prompt' %}" hx-target="#chat-scrollable-container">
+            <div class="input-container">
+                {#                <label for="chat-input"></label>#}
+                <input id="chat-input" type="text" placeholder="Send a message..." name='prompt' required>
+                <div id="send-button-container">
+                    <button id="send-button" class="bg-gray-700 text-white" type="submit">Send</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+{% endblock %}
