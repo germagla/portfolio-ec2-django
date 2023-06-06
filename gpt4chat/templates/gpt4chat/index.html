@@ -3,32 +3,64 @@
 
 {% block title %}GPT4Chat{% endblock %}
 
-{% block header %}
-    <div id="chat-header" class="bg-gray-700 h-full border-b-gray-200"></div>
 
+{% block header %}
+    <nav class="bg-gray-700 h-14 sm:h-fit  py-4 fixed top-0 left-0 right-0 ">
+        <div class=" mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="hidden sm:flex justify-between">
+                <div class="flex">
+                    <a href="/" class="text-white text-xl font-bold">My Site</a>
+                </div>
+                <div class="flex space-x-4">
+                    <a href="{% url 'chat' %}"
+                    class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">GPT4Chat</a>
+                    <a href=""
+                    class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">About</a>
+                    <a href=""
+                    class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Contact</a>
+                </div>
+            </div>
+        </div>
+    </nav>
 {% endblock %}
 
 {% block content %}
-    <div id="chat-scrollable-container" class="flex justify-center">
-        <div class="border-4">
-            <h1>ROLE</h1>
-            <p>LOREM IPSUM</p>
-        </div>
-        <div class="border-4">
-            <h1>ROLE</h1>
-            <p>LOREM IPSUM</p>
-        </div>
-    </div>
-    <div id="chat-input-container">
-        <form hx-post="{% url 'process_prompt' %}" hx-target="#chat-scrollable-container">
-            <div class="input-container">
-                {#                <label for="chat-input"></label>#}
-                <input id="chat-input" type="text" placeholder="Send a message..." name='prompt' required>
-                <div id="send-button-container">
-                    <button id="send-button" class="bg-gray-700 text-white" type="submit">Send</button>
+<!-- <div class="flex justify-between">
+    <input id="chat-input" class="flex-grow rounded-lg border-gray-200 border p-2 mx-2" type="text" placeholder="Send a message..." name='prompt' required>
+    <button id="send-button" class="px-4 py-2 bg-blue-500 text-black rounded-lg" type="submit">Sender</button>
+</div> -->
+<div class="h-[100vh] w-full flex flex-col justify-end">
+    <div class="h-14 w-full mb-6"></div>
+    <div class="h-[90vh] w-full">
+
+        <div class="h-[98%] sm:h-[99%] m-auto w-11/12 sm:w-5/6 bg-stone-200 rounded-lg sm:rounded-xl">
+            <div id="chat-scrollable-container" class="flex flex-col w-full p-2 sm:p-4 space-y-2">
+                <div id="content" class="w-full flex">
+                    <div class="max-w-[75%] my-2">
+                        <div class="rounded-lg bg-white p-2 shadow">
+                            <div class="text-blue-500">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi, odio suscipit dolores laboriosam tempore aliquam earum expedita beatae sequi?</div>
+                        </div> 
+                    </div>       
+                </div>
+                <div id="content" class="w-full flex">
+                    <div class="flex justify-end w-full">
+                        <div class="rounded-lg bg-white p-2 shadow max-w-[75%]">
+                            <div class="text-gray-700">Lorem ipsum dolor sit amet consectetur, adipisicing elit. At explicabo iure, minus quaerat molestias hic provident sequi debitis perferendis necessitatibus tempore accusamus dignissimos velit asperiores!</div>
+                        </div>
+                    </div>
                 </div>
             </div>
+        </div>
+
+    </div>
+
+    <div id="chat-input-container " >
+        <form class="flex h-[6vh] w-full sm:w-5/6 mx-auto  px-2 sm:px-0 space-x-1" hx-post="{% url 'process_prompt' %}" hx-target="#chat-scrollable-container">
+            <input id="chat-input" class="h-11 w-9/12 sm:w-10/12 rounded-lg border-gray-600 border text-stone-800 p-2 mr-1 focus:outline-none" type="text" placeholder="Send a message..." name='prompt' required>
+            <button id="send-button" class="h-9 w-3/12 sm:w-2/12 px-4  bg-black text-white rounded-lg hover:bg-stone-700 transition duration-100 mt-1" type="submit">Send</button>
         </form>
     </div>
+</div>
+
 
 {% endblock %}
