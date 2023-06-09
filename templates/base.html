@@ -8,6 +8,8 @@
     <title>{% block title %}{% endblock %}</title>
     <link rel="stylesheet" href="{% static 'css/tailwind-output.css' %}">
     <script src="https://unpkg.com/htmx.org/dist/htmx.js"></script>
+    <!-- ##### remember to remove ###### -->
+    <script src="https://cdn.tailwindcss.com"></script>
     <script src="{% static 'htmx/htmx.min.js' %}" defer></script>
     {% django_htmx_script %}
 
@@ -34,7 +36,7 @@
         </nav>
     {% endblock %}
 </div>
-<div id="content" class="py-10">
+<div id="content" class="">
     {% block content %}
     {% endblock %}
 </div>
