@@ -5,4 +5,5 @@ venv/
 logs/
 local_cdn/
 node_modules/
+**/__pycache__/
 .env
