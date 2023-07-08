@@ -6,28 +6,41 @@
 <head>
     <meta charset="UTF-8">
     <title>{% block title %}{% endblock %}</title>
+    <link rel="preconnect" href="https://rsms.me/">
+    <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
+    <link href="{% static 'fontawesomefree/css/fontawesome.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'fontawesomefree/css/brands.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'fontawesomefree/css/solid.css' %}" rel="stylesheet" type="text/css">
+
     <link rel="stylesheet" href="{% static 'css/tailwind-output.css' %}">
-    <script src="https://unpkg.com/htmx.org/dist/htmx.js"></script>
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+
+{#    <script src="https://unpkg.com/htmx.org/dist/htmx.js"></script>#}
+
     <!-- ##### remember to remove ###### -->
-    <script src="https://cdn.tailwindcss.com"></script>
+    {#    <script src="https://cdn.tailwindcss.com"></script>#}
+    <!-- ##### remember to remove ###### -->
+
     <script src="{% static 'htmx/htmx.min.js' %}" defer></script>
+    <script src="{% static 'js/base.js' %}" defer></script>
     {% django_htmx_script %}
 
 </head>
-<body hx-headers='{"X-CSRFToken": "{{ csrf_token }}"}'>
+{#<body hx-headers='{"X-CSRFToken": "{{ csrf_token }}"}'>#}
+{#<body hx-headers='{"X-CSRFToken": "{{ csrf_token }}"}'>#}
 <div id="header" class="relative">
     {% block header %}
-        <nav class="bg-gray-700 py-4 shadow-2xl fixed top-0 left-0 right-0 ">
+        <nav class="bg-gray-700 h-14 sm:h-fit  py-4 fixed top-0 left-0 right-0 ">
             <div class=" mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="flex justify-between">
+                <div class="hidden sm:flex justify-between">
                     <div class="flex">
                         <a href="/" class="text-white text-xl font-bold">My Site</a>
                     </div>
                     <div class="flex space-x-4">
                         <a href="{% url 'chat' %}"
-                           class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">GPT4Chat</a>
+                           class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">chatLLM</a>
                         <a href=""
-                           class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">About</a>
+                           class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Projects</a>
                         <a href=""
                            class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Contact</a>
                     </div>

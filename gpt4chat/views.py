@@ -8,6 +8,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 openai.api_key = os.environ.get('OPENAI_API_KEY')
+model = 'gpt-4'
 
 prompt = ''
 conversation = []
@@ -22,11 +23,11 @@ def index(request):
         # ... more messages ...
     ]
 
-    return render(request, 'gpt4chat/index.html')
+    return render(request, 'gpt4chat/index.html', {'model': model})
 
 
 def process_prompt(request):
-    global prompt
+    # global prompt
 
     prompt = request.POST.get('prompt')
     messages = request.POST.get('messages')
@@ -34,12 +35,10 @@ def process_prompt(request):
     conversation.append({'role': 'user', 'content': prompt})
 
     response = openai.ChatCompletion.create(
-        model='gpt-3.5-turbo',
+        model=model,
         messages=conversation,
     )
     conversation.append(response.choices[0].message)
-    print(response.choices[0].finish_reason)
-    print(response.choices[0].message)
 
     return render(request, 'gpt4chat/htmx/chat.html', {'messages': conversation[3:]})
 
