@@ -1,5 +1,4 @@
 {% load static %}
-{% load django_htmx %}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -23,10 +22,9 @@
 
     <script src="{% static 'htmx/htmx.min.js' %}" defer></script>
     <script src="{% static 'js/base.js' %}" defer></script>
-    {% django_htmx_script %}
 
 </head>
-{#<body hx-headers='{"X-CSRFToken": "{{ csrf_token }}"}'>#}
+<body hx-headers='{"X-CSRFToken": "{{ csrf_token }}"}'>
 {#<body hx-headers='{"X-CSRFToken": "{{ csrf_token }}"}'>#}
 <div id="header" class="relative">
     {% block header %}
