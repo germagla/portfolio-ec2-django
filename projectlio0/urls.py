@@ -21,7 +21,8 @@ from . import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.index, name='projectlio0-index'),  # TODO: Make homepage for portfolio site inspired by
+    path('', views.index, name='projectlio0-index'),    # TODO: Make homepage for portfolio site inspired by
+                                                        # TODO: https://www.atharvp.dev/
     path('chatLLM/', include('chatLLM.urls')),
 ]
 
