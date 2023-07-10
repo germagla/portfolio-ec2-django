@@ -21,8 +21,8 @@ from . import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.index, name='projectlio0-index'),  # TODO: Add list of apps and links to them
-    path('gpt4chat/', include('gpt4chat.urls')),
+    path('', views.index, name='projectlio0-index'),  # TODO: Make homepage for portfolio site inspired by
+    path('chatLLM/', include('chatLLM.urls')),
 ]
 
 if settings.DEBUG:

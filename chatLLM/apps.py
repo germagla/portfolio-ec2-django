@@ -3,4 +3,4 @@ from django.apps import AppConfig
 
 class ChatgptCloneConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
-    name = 'gpt4chat'
+    name = 'chatLLM'

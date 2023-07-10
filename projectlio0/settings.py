@@ -36,7 +36,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'fontawesomefree',
-    'gpt4chat',
+    'chatLLM',
 ]
 
 MIDDLEWARE = [
@@ -143,6 +143,6 @@ LOGGING = {
 }
 
 CORS_ALLOWED_ORIGINS = [
-    "http://ec2-3-91-76-61.compute-1.amazonaws.com/",
+    "https://ec2-13-39-139-220.eu-west-3.compute.amazonaws.com",
     "http://localhost",
 ]
