@@ -1,0 +1,3 @@
+[submodule "chatLLM"]
+	path = chatLLM
+	url = https://github.com/germagla/chatLLM.git
