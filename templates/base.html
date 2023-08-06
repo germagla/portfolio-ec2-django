@@ -14,18 +14,19 @@
     <link rel="stylesheet" href="{% static 'css/tailwind-output.css' %}">
     <link rel="stylesheet" href="{% static 'css/base.css' %}">
 
-{#    <script src="https://unpkg.com/htmx.org/dist/htmx.js"></script>#}
+    {#    <script src="https://unpkg.com/htmx.org/dist/htmx.js"></script>#}
 
     <!-- ##### remember to remove ###### -->
-{#        <script src="https://cdn.tailwindcss.com"></script>#}
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://kit.fontawesome.com/9a09bfee6b.js" crossorigin="anonymous"></script>
     <!-- ##### remember to remove ###### -->
 
+    <script src="https://unpkg.com/hyperscript.org@0.9.11"></script>
     <script src="{% static 'htmx/htmx.min.js' %}" defer></script>
     <script src="{% static 'js/base.js' %}" defer></script>
 
 </head>
 <body hx-headers='{"X-CSRFToken": "{{ csrf_token }}"}'>
-{#<body hx-headers='{"X-CSRFToken": "{{ csrf_token }}"}'>#}
 <div id="header" class="relative">
     {% block header %}
         <nav class="bg-gray-700 h-14 sm:h-fit  py-4 fixed top-0 left-0 right-0 ">
