@@ -37,9 +37,13 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'fontawesomefree',
     'chatLLM',
+    'todoBackend',
+    'corsheaders',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -145,4 +149,8 @@ LOGGING = {
 CORS_ALLOWED_ORIGINS = [
     "https://ec2-13-39-139-220.eu-west-3.compute.amazonaws.com",
     "http://localhost",
+]
+
+CORS_ORIGIN_WHITELIST = [
+    'http://localhost:3000'
 ]

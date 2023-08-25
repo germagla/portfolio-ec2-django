@@ -18,12 +18,18 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include
 from . import views
+from rest_framework import routers
+from todoBackend.views import ToDoViewSet
+
+router = routers.DefaultRouter()
+router.register(r'todos', ToDoViewSet, 'todo')
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.index, name='projectlio0-index'),    # TODO: Make homepage for portfolio site inspired by
-                                                        # TODO: https://www.atharvp.dev/
+    path('', views.index, name='projectlio0-index'),  # TODO: Make homepage for portfolio site inspired by
+    # TODO: https://www.atharvp.dev/
     path('chatLLM/', include('chatLLM.urls')),
+    path('todo-backend/', include(router.urls)),
 ]
 
 if settings.DEBUG:
