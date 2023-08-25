@@ -1,3 +1,6 @@
 [submodule "chatLLM"]
 	path = chatLLM
 	url = https://github.com/germagla/chatLLM.git
+[submodule "todoBackend"]
+	path = todoBackend
+	url = https://github.com/germagla/todoBackend.git
