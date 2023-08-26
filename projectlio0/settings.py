@@ -149,6 +149,7 @@ LOGGING = {
 CORS_ALLOWED_ORIGINS = [
     "https://ec2-13-39-139-220.eu-west-3.compute.amazonaws.com",
     "http://localhost",
+    "http://localhost:3000",
 ]
 
 CORS_ORIGIN_WHITELIST = [
