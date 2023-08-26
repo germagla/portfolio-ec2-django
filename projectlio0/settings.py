@@ -146,6 +146,8 @@ LOGGING = {
     },
 }
 
+CORS_ALLOW_ALL_ORIGINS = True
+
 CORS_ALLOWED_ORIGINS = [
     "https://ec2-13-39-139-220.eu-west-3.compute.amazonaws.com",
     "http://localhost",
