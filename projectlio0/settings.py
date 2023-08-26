@@ -155,5 +155,5 @@ CORS_ALLOWED_ORIGINS = [
 
 CORS_ORIGIN_WHITELIST = [
     'http://localhost:3000',
-    '*',
+    "https://germagla.github.io/django-react-todo-frontend/",
 ]
