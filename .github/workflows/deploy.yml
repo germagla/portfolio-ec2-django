@@ -31,7 +31,7 @@ jobs:
           echo "$SERVER_SSH_KEY" | tail -n 2
           
           # Use SSH to log into the server, pull the latest code, and reload Gunicorn
-          ssh -o StrictHostKeyChecking=no -i deploy_key ubuntu@ec2-13-39-139-220.eu-west-3.compute.amazonaws.com -p 22 "
+          ssh -o StrictHostKeyChecking=no -i deploy_key ubuntu@germagla.dev -p 22 "
             cd /portfolio_ec2_django && 
             git pull && 
             sudo systemctl reload gunicorn
