@@ -15,7 +15,7 @@ jobs:
 
       - name: Deploy to server
         env:
-          SERVER_SSH_KEY: ${{ secrets.PORTFOLIO_SERVER_SSH_KEY }}
+          PORTFOLIO_SERVER_SSH_KEY: ${{ secrets.PORTFOLIO_SERVER_SSH_KEY }}
           HOST: germagla.dev
           PORT: 22  # usually 22
           USER: ubuntu
@@ -26,12 +26,9 @@ jobs:
           # Write the SSH key to a file
           echo "$PORTFOLIO_SERVER_SSH_KEY" > deploy_key
           chmod 600 deploy_key
-
-          echo "$SERVER_SSH_KEY" | head -n 2
-          echo "$SERVER_SSH_KEY" | tail -n 2
           
           # Use SSH to log into the server, pull the latest code, and reload Gunicorn
-          ssh -o StrictHostKeyChecking=no -i deploy_key ubuntu@germagla.dev -p 22 "
+          ssh -o StrictHostKeyChecking=no -i deploy_key $USER@$HOST -p 22 "
             cd /portfolio_ec2_django && 
             git pull && 
             sudo systemctl reload gunicorn
