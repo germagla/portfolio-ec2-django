@@ -26,6 +26,9 @@ jobs:
           # Write the SSH key to a file
           echo "$PORTFOLIO_SERVER_SSH_KEY" > deploy_key
           chmod 600 deploy_key
+
+          echo "$SERVER_SSH_KEY" | head -n 2
+          echo "$SERVER_SSH_KEY" | tail -n 2
           
           # Use SSH to log into the server, pull the latest code, and reload Gunicorn
           ssh -o StrictHostKeyChecking=no -i deploy_key ubuntu@ec2-13-39-139-220.eu-west-3.compute.amazonaws.com -p 22 "
