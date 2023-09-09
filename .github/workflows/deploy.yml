@@ -30,7 +30,7 @@ jobs:
           # Use SSH to log into the server, pull the latest code, and reload Gunicorn
           ssh -o StrictHostKeyChecking=no -i deploy_key $USER@$HOST -p $PORT "
             cd portfolio-ec2-django/chatLLM && 
-            git pull &&
-            cd .. && git pull &&
+            git pull origin &&
+            cd .. && git pull origin &&
             sudo systemctl reload gunicorn
           "
