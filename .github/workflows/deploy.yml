@@ -28,7 +28,7 @@ jobs:
           chmod 600 deploy_key
           
           # Use SSH to log into the server, pull the latest code, and reload Gunicorn
-          ssh -o StrictHostKeyChecking=no -i deploy_key $USER@$HOST -p 22 "
+          ssh -o StrictHostKeyChecking=no -i deploy_key $USER@$HOST -p $PORT "
             cd portfolio-ec2-django/chatLLM && 
             git pull &&
             cd .. && git pull &&
