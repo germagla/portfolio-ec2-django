@@ -15,7 +15,7 @@ jobs:
 
       - name: Deploy to server
         env:
-          SERVER_SSH_KEY: ${{ secrets.PORTFOLIO_SERVER_SSH_KEY }}
+          PORTFOLIO_SERVER_SSH_KEY: ${{ secrets.PORTFOLIO_SERVER_SSH_KEY }}
           HOST: germagla.dev
           PORT: 22  # usually 22
           USER: ubuntu
@@ -28,8 +28,9 @@ jobs:
           chmod 600 deploy_key
           
           # Use SSH to log into the server, pull the latest code, and reload Gunicorn
-          ssh -o StrictHostKeyChecking=no -i deploy_key ubuntu@ec2-13-39-139-220.eu-west-3.compute.amazonaws.com -p 22 "
-            cd /portfolio_ec2_django && 
-            git pull && 
-            sudo systemctl reload gunicorn
+          ssh -o StrictHostKeyChecking=no -i deploy_key $USER@$HOST -p $PORT "
+            cd portfolio-ec2-django/chatLLM && 
+            git pull origin &&
+            cd .. && git pull origin &&
+            sudo systemctl restart gunicorn
           "
