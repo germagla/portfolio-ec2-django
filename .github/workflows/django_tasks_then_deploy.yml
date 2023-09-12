@@ -1,7 +1,7 @@
 name: Deploy to Production Server with Django tasks
 
 on:
-  push:
+  workflow_dispatch:
     branches:
       - main  # adjust this if your primary branch is named differently
 
