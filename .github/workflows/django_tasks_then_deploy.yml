@@ -32,7 +32,7 @@ jobs:
             cd portfolio-ec2-django/chatLLM && 
             git pull origin &&
             cd .. && git pull origin &&
-            source venv/bin/activate &&  # Assuming you use a virtual environment named 'venv'
+            source env/bin/activate &&  # Assuming you use a virtual environment named 'venv'
             pip install -r requirements.txt &&
             python manage.py collectstatic --noinput &&
             python manage.py makemigrations &&
