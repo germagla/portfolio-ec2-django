@@ -1,6 +1,6 @@
 Repo contains submodules, use the --recursive flag when cloning!
 
-(git clone --recursive <repository-url>)
+(git clone --recursive repository-url)
 
 python3 -m venv env
 
