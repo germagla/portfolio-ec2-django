@@ -7,6 +7,7 @@
     <title>{% block title %}{% endblock %}</title>
     <link rel="preconnect" href="https://rsms.me/">
     <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
+
     <link href="{% static 'fontawesomefree/css/fontawesome.css' %}" rel="stylesheet" type="text/css">
     <link href="{% static 'fontawesomefree/css/brands.css' %}" rel="stylesheet" type="text/css">
     <link href="{% static 'fontawesomefree/css/solid.css' %}" rel="stylesheet" type="text/css">
@@ -24,23 +25,36 @@
     <script src="https://unpkg.com/hyperscript.org@0.9.11"></script>
     <script src="{% static 'htmx/htmx.min.js' %}" defer></script>
     <script src="{% static 'js/base.js' %}" defer></script>
+    <script src="//unpkg.com/alpinejs" defer></script>
 
 </head>
 <body hx-headers='{"X-CSRFToken": "{{ csrf_token }}"}'>
+<!-- Mobile view warning overlay -->
+<div class="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center lg:hidden">
+    <div class="bg-white p-4 rounded shadow-lg text-center">
+        <p>This site is designed for desktop view. Please access it on a larger screen.</p>
+    </div>
+</div>
+
 <div id="header" class="relative">
     {% block header %}
         <nav class="bg-gray-700 h-14 sm:h-fit  py-4 fixed top-0 left-0 right-0 ">
             <div class=" mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="hidden sm:flex justify-between">
                     <div class="flex">
-                        <a href="/" class="text-white text-xl font-bold">germagla.dev</a>
+                        <a href="/" class="text-white text-xl font-bold">
+                            <svg class="fill-current text-center" viewBox="0 0 150 150" width="40"
+                                 height="40"
+                                 xmlns="http://www.w3.org/2000/svg">
+                                <path d="M 0,0 L 0,50 37.5,75 0,100 0,150 56.25,112.5 56.25,87.5 75,100 93.75,87.5 93.75,112.5 150,150 150,100 112.5,75 150,50 150,0 75,50"></path>
+                            </svg>
+
+                        </a>
                     </div>
                     <div class="flex space-x-4">
                         <a href="{% url 'chat' %}"
-                           class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">chatLLM</a>
-                        <a href=""
                            class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Projects</a>
-                        <a href=""
+                        <a href="{% url 'projectlio0-index' %}"
                            class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Contact</a>
                     </div>
                 </div>
