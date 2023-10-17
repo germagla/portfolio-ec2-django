@@ -6,49 +6,69 @@
 {% block content %}
     <div class="min-h-screen flex items-center justify-center bg-gray-700">
         <div class="text-center text-white">
-            <svg viewBox="0 0 150 150" xmlns="http://www.w3.org/2000/svg">
+            <svg class="block m-auto" viewBox="0 0 150 150" xmlns="http://www.w3.org/2000/svg" width="75%"
+                 height="75%">
+
                 <!-- Definitions section -->
                 <defs>
                     <!-- Gradient definition -->
-                    <linearGradient id="silveryGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                        <stop offset="0%" style="stop-color:#8B0000; stop-opacity:1"/>
-                        <stop offset="100%" style="stop-color:#4682B4; stop-opacity:1"/>
+                    <linearGradient id="silveryGradient" x1="0%" y1="100%" x2="100%" y2="75%">
+                        {#                        <animate attributeName="x1" values="0%;0%;100%;0%;0%" dur="15s"#}
+                        {#                                 repeatCount="indefinite"></animate>#}
+                        {#                        <animate attributeName="y1" values="0%;0%;0%;100%;0%" dur="15s"#}
+                        {#                                 repeatCount="indefinite"></animate>#}
+                        {#                        <animate attributeName="x2" values="100%;0%;0%;0%;100%" dur="15s"#}
+                        {#                                 repeatCount="indefinite"></animate>#}
+                        {#                        <animate attributeName="y2" values="0%;100%;0%;0%;0%" dur="15s"#}
+                        {#                                 repeatCount="indefinite"></animate>#}
+                        <stop offset="0%" style="stop-color:#8B0000; stop-opacity:1">
+                            <animate attributeName="stop-color"
+                                     values="#8B0000;#8B0000;#4682B4;#4682B4;#8B0000"
+                                     dur="40s"
+                                     repeatCount="indefinite"></animate>
+                        </stop>
+                        <stop offset="100%" style="stop-color:#4682B4; stop-opacity:1">
+                            <animate attributeName="stop-color"
+                                     values="#4682B4;#8B0000;#8B0000;#4682B4;#4682B4"
+                                     dur="40s"
+                                     repeatCount="indefinite"></animate>
+                        </stop>
                     </linearGradient>
 
                     <!-- Inset shadow filter definition -->
                     <filter id="inset-shadow" x="-50%" y="-50%" width="200%" height="200%">
                         <feComponentTransfer in="SourceAlpha">
-                            <feFuncA type="table" tableValues="0 0 1"/>
+                            <feFuncA type="table" tableValues="0 0 1"></feFuncA>
                         </feComponentTransfer>
-                        <feGaussianBlur stdDeviation="3"/>
-                        <feOffset dx="2" dy="2" result="offsetblur"/>
-                        <feFlood flood-color="black" result="color"/>
-                        <feComposite in2="offsetblur" operator="in"/>
-                        <feComposite in2="SourceAlpha" operator="in"/>
+                        <feGaussianBlur stdDeviation="3"></feGaussianBlur>
+                        <feOffset dx="2" dy="2" result="offsetblur"></feOffset>
+                        <feFlood flood-color="black" result="color"></feFlood>
+                        <feComposite in2="offsetblur" operator="in"></feComposite>
+                        <feComposite in2="SourceAlpha" operator="in"></feComposite>
 
                         <!-- Adjusted filter primitives for the deeper inner shadow -->
-                        <feMorphology operator="dilate" radius="24" in="SourceAlpha" result="expand"/>
-                        <feComposite in="expand" in2="SourceAlpha" operator="out" result="shadow"/>
-                        <feGaussianBlur in="shadow" stdDeviation="2" result="shadowblur"/>
-                        <feOffset in="shadowblur" dx="-2" dy="-2" result="shadowoffset"/>
-                        <feFlood flood-color="black" flood-opacity="0.7" result="shadowcolor"/>
-                        <feComposite in2="shadowoffset" in="shadowcolor" operator="in"/>
-                        <feComposite in2="SourceAlpha" operator="in"/>
+                        <feMorphology operator="dilate" radius="24" in="SourceAlpha" result="expand"></feMorphology>
+                        <feComposite in="expand" in2="SourceAlpha" operator="out" result="shadow"></feComposite>
+                        <feGaussianBlur in="shadow" stdDeviation="2" result="shadowblur"></feGaussianBlur>
+                        <feOffset in="shadowblur" dx="-2" dy="-2" result="shadowoffset"></feOffset>
+                        <feFlood flood-color="black" flood-opacity="0.7" result="shadowcolor"></feFlood>
+                        <feComposite in2="shadowoffset" in="shadowcolor" operator="in"></feComposite>
+                        <feComposite in2="SourceAlpha" operator="in"></feComposite>
 
                         <feMerge>
-                            <feMergeNode in="SourceGraphic"/>
-                            <feMergeNode/>
+                            <feMergeNode in="SourceGraphic"></feMergeNode>
+                            <feMergeNode></feMergeNode>
                         </feMerge>
                     </filter>
                 </defs>
 
                 <!-- The path with the gradient fill and deeper inset shadow -->
                 <path d="M 0,0 L 0,50 37.5,75 0,100 0,150 56.25,112.5 56.25,87.5 75,100 93.75,87.5 93.75,112.5 150,150 150,100 112.5,75 150,50 150,0 75,50"
-                      fill="url(#silveryGradient)" filter="url(#inset-shadow)"/>
+                      fill="url(#silveryGradient)" filter="url(#inset-shadow)"></path>
             </svg>
 
 
-            <h1 class="text-white text-4xl mb-4">WORK IN PROGRESS</h1>
+            <h1 class="text-white text-4xl mb-4 mt-16">WORK IN PROGRESS</h1>
             <p class="text-white text-xl">Check out my current project <a
                     href="{% url 'chat' %}" class="bg-gray-100 text-gray-700 rounded-md px-1">chatLLM</a>
                 for now!
