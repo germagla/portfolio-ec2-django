@@ -4,30 +4,23 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}{% endblock %}</title>
+
     <link rel="preconnect" href="https://rsms.me/">
     <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
-
-    <link href="{% static 'fontawesomefree/css/fontawesome.css' %}" rel="stylesheet" type="text/css">
-    <link href="{% static 'fontawesomefree/css/brands.css' %}" rel="stylesheet" type="text/css">
-    <link href="{% static 'fontawesomefree/css/solid.css' %}" rel="stylesheet" type="text/css">
-
     <link rel="stylesheet" href="{% static 'css/tailwind-output.css' %}">
     <link rel="stylesheet" href="{% static 'css/base.css' %}">
     <link rel="icon" type="image/x-icon" href="{% static '/images/logo.svg' %}">
-
-
-    {#    <script src="https://unpkg.com/htmx.org/dist/htmx.js"></script>#}
-
     <!-- ##### remember to remove ###### -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://kit.fontawesome.com/9a09bfee6b.js" crossorigin="anonymous"></script>
     <!-- ##### remember to remove ###### -->
 
     <script src="https://unpkg.com/hyperscript.org@0.9.11"></script>
     <script src="{% static 'htmx/htmx.min.js' %}" defer></script>
     <script src="{% static 'js/base.js' %}" defer></script>
     <script src="//unpkg.com/alpinejs" defer></script>
+
 
 </head>
 <body hx-headers='{"X-CSRFToken": "{{ csrf_token }}"}'>
@@ -99,5 +92,9 @@
     {% block content %}
     {% endblock %}
 </div>
+<script src="https://unpkg.com/lucide@latest"></script>
+<script>
+    lucide.createIcons();
+</script>
 </body>
 </html>
