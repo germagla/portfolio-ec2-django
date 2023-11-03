@@ -25,64 +25,123 @@
 </head>
 <body hx-headers='{"X-CSRFToken": "{{ csrf_token }}"}'>
 <!-- Mobile view warning overlay -->
-<div class="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center lg:hidden">
-    <div class="bg-white p-4 rounded shadow-lg text-center">
+<div class="fixed inset-0 z-50 bg-black bg-opacity-75 flex items-center justify-center lg:hidden">
+
+    <div class="bg-stone-200 text-gray-800 font-bold p-4 rounded shadow-lg text-center text-3xl">
+        <svg class="block m-auto p-8" viewBox="0 0 150 150" xmlns="http://www.w3.org/2000/svg" width="75%"
+             height="75%">
+            <!-- Definitions section -->
+            <defs>
+                <!-- Gradient definition -->
+                <linearGradient id="silveryGradient" x1="0%" y1="100%" x2="100%" y2="75%">
+                    {#                        <animate attributeName="x1" values="0%;0%;100%;0%;0%" dur="15s"#}
+                    {#                                 repeatCount="indefinite"></animate>#}
+                    {#                        <animate attributeName="y1" values="0%;0%;0%;100%;0%" dur="15s"#}
+                    {#                                 repeatCount="indefinite"></animate>#}
+                    {#                        <animate attributeName="x2" values="100%;0%;0%;0%;100%" dur="15s"#}
+                    {#                                 repeatCount="indefinite"></animate>#}
+                    {#                        <animate attributeName="y2" values="0%;100%;0%;0%;0%" dur="15s"#}
+                    {#                                 repeatCount="indefinite"></animate>#}
+                    <stop offset="0%" style="stop-color:#8B0000; stop-opacity:1">
+                        <animate attributeName="stop-color"
+                                 values="#8B0000;#8B0000;#4682B4;#4682B4;#8B0000"
+                                 dur="30s"
+                                 repeatCount="indefinite"></animate>
+                    </stop>
+                    <stop offset="100%" style="stop-color:#4682B4; stop-opacity:1">
+                        <animate attributeName="stop-color"
+                                 values="#4682B4;#8B0000;#8B0000;#4682B4;#4682B4"
+                                 dur="30s"
+                                 repeatCount="indefinite"></animate>
+                    </stop>
+                </linearGradient>
+
+                <!-- Inset shadow filter definition -->
+                <filter id="inset-shadow" x="-50%" y="-50%" width="200%" height="200%">
+                    <feComponentTransfer in="SourceAlpha">
+                        <feFuncA type="table" tableValues="0 0 1"></feFuncA>
+                    </feComponentTransfer>
+                    <feGaussianBlur stdDeviation="3"></feGaussianBlur>
+                    <feOffset dx="2" dy="2" result="offsetblur"></feOffset>
+                    <feFlood flood-color="black" result="color"></feFlood>
+                    <feComposite in2="offsetblur" operator="in"></feComposite>
+                    <feComposite in2="SourceAlpha" operator="in"></feComposite>
+
+                    <!-- Adjusted filter primitives for the deeper inner shadow -->
+                    <feMorphology operator="dilate" radius="24" in="SourceAlpha" result="expand"></feMorphology>
+                    <feComposite in="expand" in2="SourceAlpha" operator="out" result="shadow"></feComposite>
+                    <feGaussianBlur in="shadow" stdDeviation="2" result="shadowblur"></feGaussianBlur>
+                    <feOffset in="shadowblur" dx="-2" dy="-2" result="shadowoffset"></feOffset>
+                    <feFlood flood-color="black" flood-opacity="0.7" result="shadowcolor"></feFlood>
+                    <feComposite in2="shadowoffset" in="shadowcolor" operator="in"></feComposite>
+                    <feComposite in2="SourceAlpha" operator="in"></feComposite>
+
+                    <feMerge>
+                        <feMergeNode in="SourceGraphic"></feMergeNode>
+                        <feMergeNode></feMergeNode>
+                    </feMerge>
+                </filter>
+            </defs>
+
+            <!-- The path with the gradient fill and deeper inset shadow -->
+            <path d="M 0,0 L 0,50 37.5,75 0,100 0,150 56.25,112.5 56.25,87.5 75,100 93.75,87.5 93.75,112.5 150,150 150,100 112.5,75 150,50 150,0 75,50"
+                  fill="url(#silveryGradient)" filter="url(#inset-shadow)"></path>
+        </svg>
+
         <p>This site is designed for desktop view. Please access it on a larger screen.</p>
     </div>
 </div>
 
 <div id="header" class="relative">
     {% block header %}
-        <nav class="bg-gray-800 h-12 sm:h-fit py-4 fixed top-0 left-0 right-0 shadow shadow-lg">
-            <div class=" mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="hidden sm:flex justify-between">
-                    <div class="flex">
-                        <a href="/" class="text-white">
-                            <svg class="fill-current" viewBox="0 0 150 150" xmlns="http://www.w3.org/2000/svg"
-                                 width="40" height="40">
-                                <defs>
+        <nav class="bg-stone-200 text-gray-800 px-12 fixed top-0 left-0 right-0 shadow shadow-lg flex justify-between items-stretch">
+            <div class="flex p-4">
+                <a href="/">
+                    <svg class="fill-current" viewBox="0 0 150 150" xmlns="http://www.w3.org/2000/svg"
+                         width="50" height="50">
+                        <defs>
 
-                                    <!-- Inset shadow filter definition -->
-                                    <filter id="inset-shadow" x="-50%" y="-50%" width="200%" height="200%">
-                                        <feComponentTransfer in="SourceAlpha">
-                                            <feFuncA type="table" tableValues="0 0 1"></feFuncA>
-                                        </feComponentTransfer>
-                                        <feGaussianBlur stdDeviation="3"></feGaussianBlur>
-                                        <feOffset dx="2" dy="2" result="offsetblur"></feOffset>
-                                        <feFlood flood-color="black" result="color"></feFlood>
-                                        <feComposite in2="offsetblur" operator="in"></feComposite>
-                                        <feComposite in2="SourceAlpha" operator="in"></feComposite>
+                            <!-- Inset shadow filter definition -->
+                            <filter id="inset-shadow" x="-50%" y="-50%" width="200%" height="200%">
+                                <feComponentTransfer in="SourceAlpha">
+                                    <feFuncA type="table" tableValues="0 0 1"></feFuncA>
+                                </feComponentTransfer>
+                                <feGaussianBlur stdDeviation="3"></feGaussianBlur>
+                                <feOffset dx="2" dy="2" result="offsetblur"></feOffset>
+                                <feFlood flood-color="black" result="color"></feFlood>
+                                <feComposite in2="offsetblur" operator="in"></feComposite>
+                                <feComposite in2="SourceAlpha" operator="in"></feComposite>
 
-                                        <!-- Adjusted filter primitives for the deeper inner shadow -->
-                                        <feMorphology operator="dilate" radius="24" in="SourceAlpha"
-                                                      result="expand"></feMorphology>
-                                        <feComposite in="expand" in2="SourceAlpha" operator="out"
-                                                     result="shadow"></feComposite>
-                                        <feGaussianBlur in="shadow" stdDeviation="2"
-                                                        result="shadowblur"></feGaussianBlur>
-                                        <feOffset in="shadowblur" dx="-2" dy="-2" result="shadowoffset"></feOffset>
-                                        <feFlood flood-color="black" flood-opacity="0.7" result="shadowcolor"></feFlood>
-                                        <feComposite in2="shadowoffset" in="shadowcolor" operator="in"></feComposite>
-                                        <feComposite in2="SourceAlpha" operator="in"></feComposite>
+                                <!-- Adjusted filter primitives for the deeper inner shadow -->
+                                <feMorphology operator="dilate" radius="24" in="SourceAlpha"
+                                              result="expand"></feMorphology>
+                                <feComposite in="expand" in2="SourceAlpha" operator="out"
+                                             result="shadow"></feComposite>
+                                <feGaussianBlur in="shadow" stdDeviation="2"
+                                                result="shadowblur"></feGaussianBlur>
+                                <feOffset in="shadowblur" dx="-2" dy="-2" result="shadowoffset"></feOffset>
+                                <feFlood flood-color="black" flood-opacity="0.7" result="shadowcolor"></feFlood>
+                                <feComposite in2="shadowoffset" in="shadowcolor" operator="in"></feComposite>
+                                <feComposite in2="SourceAlpha" operator="in"></feComposite>
 
-                                        <feMerge>
-                                            <feMergeNode in="SourceGraphic"></feMergeNode>
-                                            <feMergeNode></feMergeNode>
-                                        </feMerge>
-                                    </filter>
-                                </defs>
-                                <path d="M 0,0 L 0,50 37.5,75 0,100 0,150 56.25,112.5 56.25,87.5 75,100 93.75,87.5 93.75,112.5 150,150 150,100 112.5,75 150,50 150,0 75,50"
-                                      filter="url(#inset-shadow)"/>
-                            </svg>
+                                <feMerge>
+                                    <feMergeNode in="SourceGraphic"></feMergeNode>
+                                    <feMergeNode></feMergeNode>
+                                </feMerge>
+                            </filter>
+                        </defs>
+                        <path d="M 0,0 L 0,50 37.5,75 0,100 0,150 56.25,112.5 56.25,87.5 75,100 93.75,87.5 93.75,112.5 150,150 150,100 112.5,75 150,50 150,0 75,50"
+                              filter="url(#inset-shadow)"/>
+                    </svg>
 
-                        </a>
-                    </div>
-                    <div class="flex space-x-4">
-                        <a href="{% url 'chat' %}"
-                           class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Projects</a>
-                        <a href="{% url 'projectlio0-index' %}"
-                           class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Contact</a>
-                    </div>
+                </a>
+            </div>
+            <div class="flex items-stretch">
+                <div class="flex items-center justify-center text-sm font-medium hover:bg-gray-800 hover:text-stone-200 h-full px-5 py-2">
+                    <a href="{% url 'chat' %}">Projects</a>
+                </div>
+                <div class="flex items-center justify-center text-sm font-medium hover:bg-gray-800 hover:text-stone-200 h-full px-5 py-2">
+                    <a href="{% url 'projectlio0-index' %}">Contact</a>
                 </div>
             </div>
         </nav>
